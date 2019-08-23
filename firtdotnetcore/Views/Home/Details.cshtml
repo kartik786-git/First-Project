@@ -1,0 +1,95 @@
+﻿@model HomeDetailsViewModel
+
+
+@{
+    //Layout = "~/Views/Shared/_Layout.cshtml"; // create common calling file _ViewStart.cshtml file
+    ViewBag.Title = Model.PageTitle;
+    var photoPath = "~/images/" + (Model.Employee.PhotoPath ?? "noimage.jpg");
+}
+
+@*<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>@ViewBag.PageTitle</title>
+    </head>
+    <body>*@
+<!-- #region ViewData -->
+@*@{
+
+        var employee = ViewData["Employee"] as firtdotnetcore.Models.Employee;
+    }
+
+    <div>
+        Name : @employee.Name
+    </div>
+
+    <div>
+        Email : @employee.Email
+    </div>
+
+    <div>
+        Department : @employee.Department
+    </div>*@
+
+<!-- #endregion -->
+<!-- #region ViewBeg examples -->
+@*<h2>@ViewBag.PageTitle </h2>
+    <div>
+        Name : @ViewBag.Employee.Name
+    </div>
+
+    <div>
+        Email : @ViewBag.Employee.Email
+    </div>
+
+    <div>
+        Department :@ViewBag.Employee.Department
+    </div>*@
+
+<!-- #endregion -->
+<!-- #region strongly type view -->
+
+@*<h2>@Model.PageTitle </h2>
+<div>
+    Name : @Model.Employee.Name
+</div>
+
+<div>
+    Email : @Model.Employee.Email
+</div>
+
+<div>
+    Department :@Model.Employee.Department
+</div>*@
+
+<div class="row justify-content-center m-3">
+    <div class="col-sm-8">
+        <div class="card">
+            <div class="card-header">
+                <h1>@Model.Employee.Name</h1>
+            </div>
+
+            <div class="card-body text-center">
+                <img class="card-img-top imageThumbnail" src="@photoPath" asp-append-version="true" />
+
+                <h4>Employee ID : @Model.Employee.Id</h4>
+                <h4>Email : @Model.Employee.Email</h4>
+                <h4>Department : @Model.Employee.Department</h4>
+
+            </div>
+            <div class="card-footer text-center">
+                <a asp-controller="Home" asp-action="Index" class="btn btn-primary">Back</a>
+                @*<a href="#" class="btn btn-primary">Back</a>*@
+                <a asp-controller="home" asp-action="edit" asp-route-id="@Model.Employee.Id" class="btn btn-primary">Edit</a>
+                <a href="#" class="btn btn-danger">Delete</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts { 
+<script src="~/js/CustomScript.js"></script>
+}
+
+<!-- #endregion -->
+@*</body>
+    </html>*@
